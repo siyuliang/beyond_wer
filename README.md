@@ -5,19 +5,19 @@ This repository contains code for analyzing OpenAI's Whisper large-v2 model perf
 ## Overview
 
 The analysis examines Whisper's behavior during beam search decoding by capturing:
+- Word Error Rate (WER) vs training hours
 - Token-level predictions and probabilities
 - Confidence scores of chosen tokens
+- Gold token rankings (via alignment with ground truth)
 - Entropy distributions over candidate tokens
 - Diversity of alternate hypotheses
-- Gold token rankings (via alignment with ground truth)
-- Word Error Rate (WER) vs training hours
 
 ## Data Collection
 
 **Input**: Common Voice 17.0 dataset (~600 seconds per language)  
 **Model**: Whisper large-v2  
 **Decoding**: Beam search (beam_size=5, temperature=0.2)  
-**Languages**: 30 languages across high/medium/low resource groups
+**Languages**: 30 languages across high/medium/low resource groups, although only a selection was used for analysis
 
 ### Language Coverage
 
@@ -25,13 +25,11 @@ The analysis examines Whisper's behavior during beam search decoding by capturin
 - **Medium-resource** (13): Italian, Dutch, Swedish, Catalan, Finnish, Indonesian, Vietnamese, Romanian, Norwegian, Czech, Hungarian, Yoruba
 - **Low-resource** (12): Welsh, Lithuanian, Latvian, Azerbaijani, Estonian, Basque
 
-**Excluded languages**: Uzbek, Maltese, Swahili, Albanian, Yoruba, Danish, Vietnamese, Czech
-
 ## Repository Structure
 
 ```
 emnlp/
-├── README.md                           # This file
+├── README.md                           
 ├── subtoken_beam.ipynb                 # Main data collection script
 ├── plot_confidence.ipynb               # Confidence vs training hours analysis
 ├── plot_diversity.ipynb                # Type-Token Ratio of alternates
@@ -153,4 +151,4 @@ TRAINING_HOURS_CSV = Path("whisper_training_hours.csv")
 - `language_wer_metrics.csv`: Aggregate WER metrics
 
 ## Notes
-Part of this text is generated with LLM
+An original draft of the readme was generated with LLM based on the code, which was later manually checked.
